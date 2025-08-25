@@ -339,7 +339,7 @@ def charades_metrics(submission_array, gt_array):
     metrics = {}
     fix = submission_array.copy()
     empty = np.sum(gt_array, axis=1) == 0
-    fix[empty, :] = np.NINF
+    fix[empty, :] = -np.inf
     m_ap, w_ap, m_aps = map(fix, gt_array)
     metrics['mAP'] = m_ap
     # metrics['wAP'] = w_ap

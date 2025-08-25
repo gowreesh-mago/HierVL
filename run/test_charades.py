@@ -33,7 +33,7 @@ def charades_map(submission_array, gt_array):
     """
     fix = submission_array.copy()
     empty = np.sum(gt_array, axis=1) == 0
-    fix[empty, :] = np.NINF
+    fix[empty, :] = -np.inf
     return map(fix, gt_array)
 
 def map(submission_array, gt_array):
