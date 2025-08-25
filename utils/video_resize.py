@@ -11,8 +11,8 @@ import sys
 import subprocess
 from multiprocessing import Pool, Value
 
-folder_path = './dataset/ego4d/'
-output_path = './dataset/ego4d_256/'
+folder_path = '/home/dkoelma1/VisualSearch/Ego4D/v1/full_scale'
+output_path = '/ivi/zfs/s0/original_homes/gmago/Hier_VLM/Ego4D/resized_videos'
 
 def videos_resize(videoinfos):
     global count

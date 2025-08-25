@@ -41,7 +41,7 @@ class ConfigParser:
             if eval_mode == "epic":
                 resume_cfg_fname = Path('configs/eval/epic.json')
             if eval_mode == "charades":
-                resume_cfg_fname = Path('configs/eval/charades.json')
+                resume_cfg_fname = Path('/home/gmago/HypVL/HypVL/HierVL/configs/eval/charades.json')
 
             config = read_json(resume_cfg_fname)
             if args.config is not None:

@@ -16,7 +16,7 @@ from csv import reader
 from sacred import Experiment
 
 import sys
-sys.path.append('/path/to/top/level/')
+sys.path.append('/home/gmago/HypVL/HypVL/HierVL')
 import torch
 from model.model import sim_matrix
 import model.metric as module_metric
@@ -103,7 +103,7 @@ def run():
 
     # construct set of sentences.
     cls_arr = []
-    with open('/datasets01/Charades-ego-v1/101320/charades-ego-v1/CharadesEgo/Charades_v1_classes.txt', 'r') as charades:
+    with open('/ivi/zfs/s0/original_homes/gmago/Hier_VLM/Charades/annotations/Charades_v1_classes.txt', 'r') as charades:
         csv_reader = list(reader(charades))
     for line in csv_reader:
         cls_arr.append(line[0][5:])
@@ -171,10 +171,11 @@ if __name__ == '__main__':
                       help='split to evaluate on.')
     args.add_argument('--batch_size', default=1, type=int,
                       help='size of batch')
+    
     config = ConfigParser(args, test=True, eval_mode='charades')
 
     # hack to get sliding into config
-    args = args.parse_args()
+    args = config.args
     config._config['sliding_window_stride'] = args.sliding_window_stride
     ex.add_config(config.config)
 

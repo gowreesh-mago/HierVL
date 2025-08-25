@@ -15,8 +15,8 @@ import subprocess
 import pandas as pd
 from csv import reader, writer
 
-video_dir = './dataset/ego4d_256/'
-output_dir = './dataset/ego4d_chunked/'
+video_dir = '/ivi/zfs/s0/original_homes/gmago/Hier_VLM/Ego4D/resized_videos'
+output_dir = '/ivi/zfs/s0/original_homes/gmago/Hier_VLM/Ego4D/chunked_videos'
 
 save_dir = os.path.join(output_dir)
 if not os.path.exists(save_dir):
