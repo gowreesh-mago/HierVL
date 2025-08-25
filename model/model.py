@@ -54,8 +54,8 @@ class FrozenInTime(BaseModel):
             attn_drop_rate = video_params.get('attn_drop_rate', 0.)
             vit_init = video_params.get('vit_init', 'imagenet-21k')
             if arch_config == 'base_patch16_224':
-                # vit_model = timm.models.vision_transformer.vit_base_patch16_224(pretrained=pretrained)
-                vit_model = torch.load("pretrained/jx_vit_base_p16_224-80ecf9dd.pth", map_location="cpu")
+                vit_model = timm.models.vision_transformer.vit_base_patch16_224(pretrained=pretrained)
+                # vit_model = torch.load("pretrained/jx_vit_base_p16_224-80ecf9dd.pth", map_location="cpu")
                 model = SpaceTimeTransformer(num_frames=num_frames,
                                             drop_rate=drop_rate,
                                             attn_drop_rate=attn_drop_rate,
@@ -70,7 +70,7 @@ class FrozenInTime(BaseModel):
             if load_checkpoint in ["", None]:
                 # vit_checkpoint = vit_model.state_dict()
                 # model.load_state_dict(vit_checkpoint, strict=False)
-                vit_checkpoint = vit_model
+                vit_checkpoint = vit_model.state_dict()
                 new_vit_dict = state_dict_data_parallel_fix(vit_checkpoint, model.state_dict())
                 model.load_state_dict(new_vit_dict, strict=False)
             self.video_model = model
